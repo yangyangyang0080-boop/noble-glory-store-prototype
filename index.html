@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>贵族荣耀商城原型</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --panel: #fffaf0;
+      --ink: #261d16;
+      --muted: #756553;
+      --line: #e5d6bd;
+      --gold: #b97a21;
+      --gold2: #e0b45b;
+      --teal: #277c76;
+      --red: #b74b3e;
+      --green: #477f4d;
+      --shadow: 0 14px 34px rgba(73, 45, 16, .16);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(185,122,33,.18), transparent 32%),
+        linear-gradient(315deg, rgba(39,124,118,.14), transparent 30%),
+        var(--bg);
+    }
+    .stage {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 300px minmax(360px, 430px) 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .phone {
+      width: 390px;
+      min-height: 780px;
+      background: #14100d;
+      border: 10px solid #18120e;
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: sticky;
+      top: 24px;
+    }
+    .screen {
+      min-height: 760px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .top {
+      padding: 20px 18px 14px;
+      background: linear-gradient(160deg, #3d2716, #8f591f 58%, #d7ad5a);
+      color: #fff9ea;
+    }
+    .top.compact .bar { margin-bottom: 0; }
+    .top.compact .asset { display: none; }
+    .top.hidden { display: none; }
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.12);
+      color: #fff9ea;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      cursor: pointer;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .asset {
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,250,240,.12);
+      border-radius: 8px;
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+    }
+    .asset-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .asset-num {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .pill {
+      border: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 24px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #fff9ea;
+      background: rgba(20,16,13,.32);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .asset-sub {
+      color: rgba(255,249,234,.82);
+      font-size: 12px;
+    }
+    .content { padding: 14px 14px 24px; }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 0 12px;
+    }
+    .grade-tabs { direction: rtl; }
+    .tab {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .tab.active {
+      color: #fffaf0;
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+    .notice {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #ead0a1;
+      background: #fff4d8;
+      color: #6c4716;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    .expire-summary {
+      display: grid;
+      gap: 0;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .expire-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .expire-row:last-child { border-bottom: 0; }
+    .expire-label {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .expire-num {
+      color: var(--red);
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .expire-date {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .quick-entry {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      min-height: 28px;
+      margin: -2px 0 8px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .quick-entry .arrow {
+      color: var(--gold);
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .empty-state {
+      min-height: 310px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 20px;
+    }
+    .empty-visual {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      color: #fff9ea;
+      background: linear-gradient(145deg, #8b8175, #d8ad58);
+      font-size: 42px;
+      box-shadow: 0 10px 24px rgba(73,45,16,.15);
+    }
+    .empty-title {
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+      box-shadow: 0 6px 14px rgba(73,45,16,.08);
+      cursor: pointer;
+    }
+    .thumb {
+      height: 92px;
+      display: grid;
+      place-items: center;
+      color: #fff9ea;
+      font-size: 34px;
+      background: linear-gradient(145deg, #7d3f25, #d8ad58);
+      position: relative;
+    }
+    .thumb.teal { background: linear-gradient(145deg, #185d59, #6bb6a7); }
+    .thumb.dark { background: linear-gradient(145deg, #251917, #80614d); }
+    .tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: 11px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: rgba(20,16,13,.55);
+      color: #fff9ea;
+    }
+    .body { padding: 10px; }
+    .name {
+      font-weight: 800;
+      font-size: 14px;
+      min-height: 38px;
+      line-height: 1.35;
+    }
+    .meta {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .price {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 15px;
+    }
+    .btn {
+      border: 0;
+      min-height: 42px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #fffaf0;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+    }
+    .btn.disabled {
+      background: #d0c4b3;
+      color: #766b5c;
+    }
+    .drawer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 520px;
+      background: #fffaf0;
+      border-radius: 18px 18px 0 0;
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -18px 38px rgba(73,45,16,.2);
+      transform: translateY(110%);
+      transition: transform .22s ease;
+      padding: 16px 16px 88px;
+      z-index: 5;
+    }
+    .drawer.show { transform: translateY(0); }
+    .drawer-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255,250,240,.92);
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    .handle {
+      width: 44px;
+      height: 5px;
+      border-radius: 999px;
+      background: #d5c2a7;
+      margin: 0 auto 14px;
+    }
+    .detail-hero {
+      height: 150px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #7d3f25, #d8ad58);
+      color: #fff9ea;
+      font-size: 52px;
+      margin-bottom: 14px;
+    }
+    .detail-hero.teal { background: linear-gradient(145deg, #185d59, #6bb6a7); }
+    .detail-hero.dark { background: linear-gradient(145deg, #251917, #80614d); }
+    .detail-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .intro {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 10px 0 12px;
+    }
+    .intro strong {
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .rules {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .rule {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+      font-size: 13px;
+    }
+    .rule span:first-child { color: var(--muted); }
+    .sheet-actions {
+      display: grid;
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 22px;
+    }
+    .page-actions {
+      display: grid;
+      margin-top: 18px;
+    }
+    .list { display: grid; gap: 10px; }
+    .benefit {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+    }
+    .benefit-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 800;
+    }
+    .expired-benefit {
+      grid-template-columns: 54px 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+    .benefit-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff9ea;
+      background: linear-gradient(145deg, #7d3f25, #d8ad58);
+      font-size: 24px;
+    }
+    .benefit-meta {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .freeze-reason {
+      margin-top: 3px;
+      padding: 7px 8px;
+      border-radius: 8px;
+      background: #fff4d8;
+      color: #8b4f0f;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+    .setting-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .setting-title {
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .setting-option {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 22px 48px 1fr;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+    }
+    .setting-option.selected {
+      border-color: var(--gold);
+      background: #fff4d8;
+    }
+    .radio {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #cdbb9d;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .setting-option.selected .radio {
+      border-color: var(--gold);
+    }
+    .setting-option.selected .radio::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .setting-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff9ea;
+      background: linear-gradient(145deg, #185d59, #6bb6a7);
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .setting-icon.none {
+      background: #c9bea9;
+      color: #6f6252;
+    }
+    .setting-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .skin-preview {
+      min-height: 148px;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: grid;
+      align-content: center;
+      gap: 12px;
+      color: #fffaf0;
+      background: linear-gradient(145deg, #c9bea9, #8d806f);
+      box-shadow: 0 8px 18px rgba(73,45,16,.12);
+      overflow: hidden;
+      position: relative;
+    }
+    .skin-preview::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 82% 16%, rgba(255,255,255,.26), transparent 24%);
+      pointer-events: none;
+    }
+    .skin-preview.star {
+      background: linear-gradient(135deg, #0e5f5c, #61b9a9 58%, #d9be70);
+    }
+    .skin-preview.darkGold {
+      background: linear-gradient(135deg, #211817, #76502f 54%, #d6a44b);
+    }
+    .skin-preview.none {
+      color: #6f6252;
+      background: linear-gradient(145deg, #e1d6c4, #b7aa96);
+    }
+    .skin-preview.seatA {
+      color: #fffaf0;
+      background: linear-gradient(135deg, #53341f, #9d6429 56%, #d7ad5a);
+    }
+    .preview-label {
+      position: relative;
+      z-index: 1;
+      color: rgba(255,250,240,.78);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .skin-preview.none .preview-label { color: #7a6d5b; }
+    .preview-id {
+      position: relative;
+      z-index: 1;
+      width: max-content;
+      max-width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(255,250,240,.16);
+      border: 1px solid rgba(255,250,240,.32);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .skin-preview.none .preview-id {
+      background: rgba(255,250,240,.36);
+      border-color: rgba(111,98,82,.18);
+    }
+    .seat-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 8px;
+    }
+    .seat-row {
+      min-height: 42px;
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: #6f6252;
+      background: rgba(255,250,240,.78);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .seat-row.active {
+      color: #fffaf0;
+      background: rgba(255,250,240,.18);
+      border: 1px solid rgba(255,250,240,.36);
+    }
+    .seat-badge {
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #fffaf0;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .point-time {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .state {
+      font-size: 12px;
+      color: #fff;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: var(--green);
+      white-space: nowrap;
+    }
+    .state.frozen { background: var(--red); }
+    .state.expired { background: #8b8175; }
+    .state.used { background: #8b8175; }
+    .side, .notes {
+      border: 1px solid var(--line);
+      background: rgba(255,250,240,.86);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 6px 20px rgba(73,45,16,.08);
+    }
+    .side h2, .notes h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+    .flow {
+      display: grid;
+      gap: 8px;
+    }
+    .flow button {
+      text-align: left;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      min-height: 42px;
+      padding: 10px 12px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .flow button.active {
+      border-color: var(--gold);
+      background: #fff0cc;
+      font-weight: 800;
+    }
+    .notes p, .notes li {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+    .notes ul { padding-left: 18px; }
+    .toast {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 24px;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(20,16,13,.92);
+      color: #fffaf0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .2s ease;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .toast-main {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 800;
+    }
+    .toast-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      background: #fffaf0;
+      color: #1d1916;
+      font-weight: 900;
+    }
+    .toast-action {
+      border: 0;
+      background: transparent;
+      color: #fffaf0;
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    @media (max-width: 980px) {
+      .stage {
+        grid-template-columns: 1fr;
+        padding: 14px;
+      }
+      .phone {
+        width: min(390px, 100%);
+        position: relative;
+        top: 0;
+        margin: 0 auto;
+      }
+      .side, .notes { order: 2; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <aside class="side">
+      <h2>原型导航</h2>
+      <div class="flow">
+        <button class="active" data-view="home">商城首页</button>
+        <button data-view="detail">商品详情</button>
+        <button data-view="exchange">我的兑换</button>
+        <button data-view="points">积分明细</button>
+      </div>
+    </aside>
+
+    <section class="phone" aria-label="移动端原型">
+      <div class="screen">
+        <header class="top" id="topHeader">
+          <div class="bar">
+            <button class="icon-btn" id="topBackBtn" aria-label="返回">‹</button>
+            <div class="title" id="headerTitle">贵族荣耀商城</div>
+            <button class="icon-btn" aria-label="规则">?</button>
+          </div>
+          <div class="asset">
+            <div class="asset-row">
+              <div>
+                <div class="asset-sub">贵族荣耀分</div>
+                <div class="asset-num" id="pointNum">128,600</div>
+              </div>
+            </div>
+            <div class="asset-row">
+              <span class="asset-sub">仅用于在荣耀商城兑换商品</span>
+              <button class="pill" id="pointDetailBtn">明细</button>
+            </div>
+          </div>
+        </header>
+
+        <section class="content" id="viewRoot"></section>
+
+        <section class="drawer" id="drawer" aria-label="商品详情">
+          <button class="drawer-close" id="closeDrawer" aria-label="关闭">×</button>
+          <div class="handle"></div>
+          <div class="detail-hero" id="detailIcon">✦</div>
+          <div class="detail-title" id="detailTitle">新房间背景</div>
+          <div class="intro" id="detailIntro"></div>
+          <div class="rules" id="detailRules"></div>
+          <div class="sheet-actions">
+            <button class="btn" id="redeemBtn">立即兑换</button>
+          </div>
+        </section>
+        <div class="toast" id="toast">兑换成功，权益已发放</div>
+      </div>
+    </section>
+
+    <aside class="notes">
+      <h2>设计说明</h2>
+      <p>这个原型把商城做成贵族体系之上的权益运营层，而不是新的等级系统。页面重点突出积分资产、段位筛选、可兑换目标、库存稀缺和降级冻结规则。</p>
+      <ul>
+        <li>首页解决“我有什么积分，可以换什么”。</li>
+        <li>详情页解决“为什么值得换，换后怎么用”。</li>
+        <li>我的兑换解决“已兑换资产在哪里，当前是什么状态”。</li>
+        <li>积分明细通过顶部明细进入，解决“积分从哪里来，什么时候过期”。</li>
+      </ul>
+    </aside>
+  </main>
+
+  <script>
+    const gradeOrder = ["男爵", "子爵", "伯爵", "侯爵", "公爵", "国王"];
+    const homeTabs = ["男爵", "子爵", "伯爵", "侯爵", "公爵", "国王"];
+    const products = [
+      { name: "新房间背景", icon: "◈", cls: "dark", minGrade: "侯爵", grade: "侯爵及以上", price: "18,000", validity: "兑换后 30 天", remaining: "剩余 56 件", intro: "兑换后立即生效，房间主页将展示专属背景。有效期内可在房间装扮中查看和使用。" },
+      { name: "进房座驾升级", icon: "◇", cls: "", minGrade: "伯爵", grade: "伯爵及以上", price: "12,000", validity: "兑换后 7 天", remaining: "剩余 88 件", intro: "兑换后立即升级当前贵族进房座驾效果。进入房间时展示升级后的进场动画。" },
+      { name: "特殊 ID 皮肤", icon: "ID", cls: "teal", minGrade: "公爵", grade: "公爵及以上", price: "28,000", validity: "兑换后 30 天", remaining: "剩余 40 件", intro: "兑换后立即生效，个人 ID 在资料卡、个人主页等场景展示专属皮肤效果。" },
+      { name: "房间列表置上席位", icon: "▲", cls: "teal", minGrade: "公爵", grade: "公爵及以上", price: "32,000", validity: "兑换后 2 小时", remaining: "剩余 120 件", intro: "兑换后立即生效，当前房间在房间列表中获得置上展示席位，提升房间曝光。" }
+    ];
+    const exchangeRecords = [
+      { title: "新房间背景", icon: "◈", status: "可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "侯爵及以上", cost: "18,000", action: "去查看" },
+      { title: "进房座驾升级", icon: "◇", status: "可用", activeTime: "07-08 12:00 - 07-15 12:00", grade: "伯爵及以上", cost: "12,000", action: "去查看" },
+      { title: "星辉 ID 皮肤", icon: "ID", status: "可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000", action: "去设置", settingKey: "idSkin" },
+      { title: "暗金 ID 皮肤", icon: "ID", status: "可用", activeTime: "07-08 00:00 - 08-07 23:59", grade: "国王", cost: "48,000", action: "去设置", settingKey: "idSkin" },
+      { title: "房间列表置上席位", icon: "▲", status: "可用", activeTime: "07-08 10:00 - 07-08 23:59", grade: "公爵及以上", cost: "32,000", action: "去设置", settingKey: "seat" },
+      { title: "特殊 ID 皮肤", icon: "ID", status: "不可用", reason: "已冻结", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000" },
+      { title: "新房间背景", icon: "◈", status: "不可用", reason: "已过期", activeTime: "06-01 00:00 - 06-30 23:59", grade: "侯爵及以上", cost: "18,000" },
+      { title: "进房座驾升级", icon: "◇", status: "不可用", reason: "已过期", activeTime: "06-21 12:00 - 06-28 12:00", grade: "伯爵及以上", cost: "12,000" },
+      { title: "房间列表置上席位", icon: "▲", status: "不可用", reason: "已过期", activeTime: "06-28 20:00 - 06-28 22:00", grade: "公爵及以上", cost: "32,000" }
+    ];
+    const settingGroups = {
+      idSkin: {
+        title: "特殊 ID 皮肤设置",
+        intro: "同一时间最多使用一个特殊 ID 皮肤，也可以选择不使用。设置只影响当前展示，不影响各权益有效时间。",
+        selected: "star",
+        options: [
+          { value: "none", name: "不使用", icon: "—", iconClass: "none", previewTitle: "默认 ID" },
+          { value: "star", name: "星辉 ID 皮肤", icon: "ID", activeTime: "07-01 00:00 - 07-31 23:59", previewTitle: "sawa 10086" },
+          { value: "darkGold", name: "暗金 ID 皮肤", icon: "ID", activeTime: "07-08 00:00 - 08-07 23:59", previewTitle: "sawa 10086" }
+        ]
+      },
+      seat: {
+        title: "房间列表置上席位设置",
+        intro: "同一时间最多使用一个置上席位，也可以选择不使用。设置后当前房间按所选席位展示。",
+        selected: "seatA",
+        options: [
+          { value: "none", name: "不使用", icon: "—", iconClass: "none", previewTitle: "普通列表展示" },
+          { value: "seatA", name: "A级置上席位", icon: "▲", activeTime: "07-08 10:00 - 07-08 23:59", previewTitle: "置上席位展示" }
+        ]
+      }
+    };
+    const pointLogs = [
+      { type: "gain", title: "送礼消费获得", amount: "+6,400", time: "07-01 14:22", desc: "有效期至 09-30 24:00" },
+      { type: "spend", title: "兑换房间列表置上席位", amount: "-32,000", time: "07-01 13:10", desc: "权益已发放" },
+      { type: "gain", title: "活动消费获得", amount: "+2,100", time: "06-30 20:08", desc: "有效期至 08-31 24:00" }
+    ];
+    const flows = document.querySelectorAll(".flow button");
+    const root = document.getElementById("viewRoot");
+    const drawer = document.getElementById("drawer");
+    const toast = document.getElementById("toast");
+    const topHeader = document.getElementById("topHeader");
+    const headerTitle = document.getElementById("headerTitle");
+    let currentProduct = products[1];
+    let toastTimer = null;
+
+    function productCard(product) {
+      return `<article class="card" data-product="${product.name}">
+        <div class="thumb ${product.cls}"><span class="tag">${product.grade}</span>${product.icon}</div>
+        <div class="body">
+          <div class="name">${product.name}</div>
+          <div class="meta"><span class="price">${product.price} 荣耀分</span></div>
+        </div>
+      </article>`;
+    }
+
+    function emptyProducts() {
+      return `<div class="empty-state">
+        <div>
+          <div class="empty-visual">✦</div>
+          <div class="empty-title">即将上架</div>
+          <div>更多荣耀商品敬请期待</div>
+        </div>
+      </div>`;
+    }
+
+    function canExchangeAt(product, grade) {
+      return gradeOrder.indexOf(grade) >= gradeOrder.indexOf(product.minGrade);
+    }
+
+    function renderHome(activeGrade = null) {
+      setHeader("贵族荣耀商城", false);
+      document.getElementById("pointNum").textContent = "128,600";
+      const selectedGrade = activeGrade || "公爵";
+      const visibleProducts = products.filter(product => product.inStock !== false && canExchangeAt(product, selectedGrade));
+      root.innerHTML = `
+        <div class="quick-entry" id="exchangeEntry">
+          <span>我的兑换</span><span class="arrow">›</span>
+        </div>
+        <div class="tabs grade-tabs">
+          ${homeTabs.map(tab => `<button class="tab ${selectedGrade === tab ? "active" : ""}" data-grade-tab="${tab}">${tab}</button>`).join("")}
+        </div>
+        ${visibleProducts.length ? `<div class="grid">${visibleProducts.map(productCard).join("")}</div>` : emptyProducts()}`;
+      document.getElementById("exchangeEntry").addEventListener("click", () => setView("exchange"));
+      root.querySelectorAll("[data-grade-tab]").forEach(tab => tab.addEventListener("click", () => renderHome(tab.dataset.gradeTab)));
+      root.querySelectorAll(".card").forEach(card => card.addEventListener("click", () => openProduct(products.find(p => p.name === card.dataset.product))));
+    }
+
+    function detailRows(product) {
+      return [
+        ["可兑换贵族段位", product.grade],
+        ["兑换所需荣耀分", product.price],
+        ["商品有效期", product.validity],
+        ["商品剩余数量", product.remaining]
+      ];
+    }
+
+    function openProduct(product) {
+      currentProduct = product;
+      setHeader("贵族荣耀商城", false);
+      document.getElementById("detailIcon").textContent = product.icon;
+      document.getElementById("detailIcon").className = `detail-hero ${product.cls || ""}`;
+      document.getElementById("detailTitle").textContent = product.name;
+      document.getElementById("detailIntro").innerHTML = `<strong>商品介绍</strong>${product.intro}`;
+      document.getElementById("detailRules").innerHTML = detailRows(product).map(r => `<div class="rule"><span>${r[0]}</span><strong>${r[1]}</strong></div>`).join("");
+      document.getElementById("redeemBtn").textContent = `立即兑换｜${product.price} 荣耀分`;
+      drawer.classList.add("show");
+    }
+
+    function unavailableStateClass(reason) {
+      return reason === "已冻结" ? "frozen" : "expired";
+    }
+
+    function renderExchange(activeStatus = "可用") {
+      setHeader("我的兑换", false, true);
+      const statuses = ["可用", "不可用"];
+      const records = exchangeRecords.filter(item => item.status === activeStatus);
+      root.innerHTML = `
+        <div class="setting-head">
+          <button class="pill" id="exchangeBack">‹ 返回</button>
+          <div class="setting-title">我的兑换</div>
+        </div>
+        <div class="tabs">${statuses.map(status => `<button class="tab ${activeStatus === status ? "active" : ""}" data-exchange-tab="${status}">${status}</button>`).join("")}</div>
+        <div class="list">${records.map(item => `<div class="benefit">
+          <div class="benefit-head"><span>${item.title}</span>${item.reason ? `<span class="state ${unavailableStateClass(item.reason)}">${item.reason}</span>` : ""}</div>
+          <div class="expired-benefit">
+            <div class="benefit-icon">${item.icon}</div>
+            <div class="benefit-meta">
+              <div>有效时间：${item.activeTime}</div>
+              ${item.status === "可用" ? `<div>可用段位：${item.grade}</div>` : ""}
+              <div>消耗荣耀分：${item.cost}</div>
+              ${item.reason === "已冻结" ? `<div class="freeze-reason">冻结原因：${item.grade}段位可用</div>` : ""}
+            </div>
+          </div>
+          ${item.status === "可用" && item.action ? `<button class="btn secondary" ${item.settingKey ? `data-setting-key="${item.settingKey}"` : ""}>${item.action}</button>` : ""}
+        </div>`).join("")}</div>`;
+      document.getElementById("exchangeBack").addEventListener("click", () => setView("home"));
+      root.querySelectorAll("[data-exchange-tab]").forEach(tab => tab.addEventListener("click", () => renderExchange(tab.dataset.exchangeTab)));
+      root.querySelectorAll("[data-setting-key]").forEach(btn => btn.addEventListener("click", () => renderPrivilegeSetting(btn.dataset.settingKey)));
+    }
+
+    function renderPrivilegeSetting(key) {
+      setHeader("贵族荣耀商城", false, true);
+      const group = settingGroups[key];
+      const selectedOption = group.options.find(option => option.value === group.selected) || group.options[0];
+      root.innerHTML = `
+        <div class="setting-head">
+          <button class="pill" id="settingBack">‹ 返回</button>
+          <div class="setting-title">${group.title}</div>
+        </div>
+        ${renderSettingPreview(key, selectedOption)}
+        <div class="list">
+          ${group.options.map(option => `<div class="setting-option ${group.selected === option.value ? "selected" : ""}" data-setting-value="${option.value}">
+            <div class="radio"></div>
+            <div class="setting-icon ${option.iconClass || ""}">${option.icon}</div>
+            <div class="benefit-meta">
+              <div class="setting-name">
+                <span>${option.name}</span>
+                ${group.selected === option.value ? `<span class="state">已选中</span>` : ""}
+              </div>
+              ${option.activeTime ? `<div>有效时间：${option.activeTime}</div>` : ""}
+            </div>
+          </div>`).join("")}
+        </div>`;
+      document.getElementById("settingBack").addEventListener("click", () => renderExchange("可用"));
+      root.querySelectorAll("[data-setting-value]").forEach(option => option.addEventListener("click", () => {
+        group.selected = option.dataset.settingValue;
+        renderPrivilegeSetting(key);
+        showToast(group.selected === "none" ? "已设置为不使用" : "已更新当前使用");
+      }));
+    }
+
+    function renderSettingPreview(key, option) {
+      if (key === "idSkin") {
+        return `<div class="skin-preview ${option.value}">
+          <div class="preview-label">当前效果预览</div>
+          <div class="preview-id">${option.previewTitle}</div>
+        </div>`;
+      }
+      if (key === "seat") {
+        const isActive = option.value !== "none";
+        return `<div class="skin-preview ${option.value}">
+          <div class="preview-label">当前效果预览</div>
+          <div class="seat-list">
+            <div class="seat-row ${isActive ? "active" : ""}">
+              <span>星光派对房</span>
+              ${isActive ? `<span class="seat-badge">置上席位</span>` : `<span>普通展示</span>`}
+            </div>
+            <div class="seat-row"><span>深夜电台</span><span>普通展示</span></div>
+          </div>
+        </div>`;
+      }
+      return "";
+    }
+
+    function pointLogCard(item) {
+      return `<div class="benefit">
+        <div class="benefit-head"><span>${item.title}</span><span class="${item.type === "gain" ? "price" : "state used"}">${item.amount}</span></div>
+        <div class="point-time">变动时间：${item.time}</div>
+        <div class="asset-sub">${item.desc}</div>
+      </div>`;
+    }
+
+    function renderPointList(type = "all") {
+      const logs = type === "all" ? pointLogs : pointLogs.filter(item => item.type === type);
+      document.getElementById("pointList").innerHTML = logs.map(pointLogCard).join("");
+    }
+
+    function renderPoints(activeType = "all") {
+      setHeader("贵族荣耀商城", false);
+      root.innerHTML = `
+        <div class="expire-summary">
+          <div class="expire-row">
+            <div>
+              <div class="expire-label">07-31 将过期积分</div>
+            </div>
+            <div class="expire-num">18,200</div>
+          </div>
+          <div class="expire-row">
+            <div>
+              <div class="expire-label">08-31 将过期积分</div>
+            </div>
+            <div class="expire-num">42,600</div>
+          </div>
+          <div class="expire-row">
+            <div>
+              <div class="expire-label">09-30 将过期积分</div>
+            </div>
+            <div class="expire-num">67,800</div>
+          </div>
+        </div>
+        <div class="tabs">
+          <button class="tab ${activeType === "all" ? "active" : ""}" data-point-tab="all">全部</button>
+          <button class="tab ${activeType === "gain" ? "active" : ""}" data-point-tab="gain">获得</button>
+          <button class="tab ${activeType === "spend" ? "active" : ""}" data-point-tab="spend">消耗</button>
+        </div>
+        <div class="list" id="pointList"></div>`;
+      renderPointList(activeType);
+      root.querySelectorAll("[data-point-tab]").forEach(tab => tab.addEventListener("click", () => renderPoints(tab.dataset.pointTab)));
+    }
+
+    function showToast(message = "兑换成功，权益已发放", options = {}) {
+      if (toastTimer) clearTimeout(toastTimer);
+      toast.innerHTML = `
+        <div class="toast-main">
+          <span class="toast-icon">✓</span>
+          <span>${message}</span>
+        </div>
+        ${options.actionText ? `<button class="toast-action" id="toastAction">${options.actionText} ›</button>` : ""}`;
+      const action = document.getElementById("toastAction");
+      if (action && options.onAction) {
+        action.addEventListener("click", () => {
+          toast.classList.remove("show");
+          options.onAction();
+        });
+      }
+      toast.classList.add("show");
+      toastTimer = setTimeout(() => toast.classList.remove("show"), options.duration || 1800);
+    }
+
+    function showRedeemSuccess() {
+      showToast("兑换成功，权益已发放", {
+        actionText: "去查看",
+        duration: 3000,
+        onAction: () => setView("exchange")
+      });
+    }
+
+    function setHeader(title, compact = false, hidden = false) {
+      headerTitle.textContent = title;
+      topHeader.classList.toggle("compact", compact);
+      topHeader.classList.toggle("hidden", hidden);
+    }
+
+    function setView(view) {
+      flows.forEach(btn => btn.classList.toggle("active", btn.dataset.view === view));
+      drawer.classList.remove("show");
+      if (view === "home") renderHome();
+      if (view === "detail") openProduct(currentProduct);
+      if (view === "exchange") renderExchange();
+      if (view === "points") renderPoints();
+    }
+
+    flows.forEach(btn => btn.addEventListener("click", () => setView(btn.dataset.view)));
+    document.getElementById("topBackBtn").addEventListener("click", () => {
+      if (drawer.classList.contains("show")) {
+        drawer.classList.remove("show");
+        return;
+      }
+      setView("home");
+    });
+    document.getElementById("pointDetailBtn").addEventListener("click", () => setView("points"));
+    document.getElementById("closeDrawer").addEventListener("click", () => drawer.classList.remove("show"));
+    document.getElementById("redeemBtn").addEventListener("click", () => { drawer.classList.remove("show"); showRedeemSuccess(); });
+    renderHome();
+  </script>
+</body>
+</html>
