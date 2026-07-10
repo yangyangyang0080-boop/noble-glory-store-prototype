@@ -785,7 +785,7 @@
 
     <aside class="notes">
       <h2>设计说明</h2>
-      <p>这个原型把商城做成贵族体系之上的权益运营层，而不是新的等级系统。页面重点突出积分资产、段位筛选、可兑换目标、库存稀缺和降级冻结规则。</p>
+      <p>这个原型把商城做成贵族体系之上的权益运营层，而不是新的等级系统。页面重点突出积分资产、段位筛选、可兑换目标、库存稀缺和降级后暂不可用规则。</p>
       <ul>
         <li>首页解决“我有什么积分，可以换什么”。</li>
         <li>详情页解决“为什么值得换，换后怎么用”。</li>
@@ -810,7 +810,7 @@
       { title: "星辉 ID 皮肤", icon: "ID", status: "可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000", action: "去设置", settingKey: "idSkin" },
       { title: "暗金 ID 皮肤", icon: "ID", status: "可用", activeTime: "07-08 00:00 - 08-07 23:59", grade: "国王", cost: "48,000", action: "去设置", settingKey: "idSkin" },
       { title: "房间列表置上席位", icon: "▲", status: "可用", activeTime: "07-08 10:00 - 07-08 23:59", grade: "公爵及以上", cost: "32,000", action: "去设置", settingKey: "seat" },
-      { title: "特殊 ID 皮肤", icon: "ID", status: "不可用", reason: "已冻结", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000" },
+      { title: "特殊 ID 皮肤", icon: "ID", status: "不可用", reason: "暂不可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000" },
       { title: "新房间背景", icon: "◈", status: "不可用", reason: "已过期", activeTime: "06-01 00:00 - 06-30 23:59", grade: "侯爵及以上", cost: "18,000" },
       { title: "进房座驾升级", icon: "◇", status: "不可用", reason: "已过期", activeTime: "06-21 12:00 - 06-28 12:00", grade: "伯爵及以上", cost: "12,000" },
       { title: "房间列表置上席位", icon: "▲", status: "不可用", reason: "已过期", activeTime: "06-28 20:00 - 06-28 22:00", grade: "公爵及以上", cost: "32,000" }
@@ -914,7 +914,7 @@
     }
 
     function unavailableStateClass(reason) {
-      return reason === "已冻结" ? "frozen" : "expired";
+      return reason === "暂不可用" ? "frozen" : "expired";
     }
 
     function renderExchange(activeStatus = "可用") {
@@ -935,7 +935,7 @@
               <div>有效时间：${item.activeTime}</div>
               ${item.status === "可用" ? `<div>可用段位：${item.grade}</div>` : ""}
               <div>消耗荣耀分：${item.cost}</div>
-              ${item.reason === "已冻结" ? `<div class="freeze-reason">冻结原因：${item.grade}段位可用</div>` : ""}
+              ${item.reason === "暂不可用" ? `<div class="freeze-reason">暂不可用原因：${item.grade}段位可用</div>` : ""}
             </div>
           </div>
           ${item.status === "可用" && item.action ? `<button class="btn secondary" ${item.settingKey ? `data-setting-key="${item.settingKey}"` : ""}>${item.action}</button>` : ""}
