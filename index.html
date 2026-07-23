@@ -611,6 +611,290 @@
       font-size: 11px;
       white-space: nowrap;
     }
+    .broadcast-preview {
+      min-height: 136px;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 12px;
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      color: #fffaf0;
+      background: linear-gradient(145deg, #201918, #714526 58%, #c8943f);
+      box-shadow: 0 8px 18px rgba(73,45,16,.14);
+    }
+    .broadcast-banner {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,250,240,.28);
+      border-radius: 8px;
+      background: rgba(255,250,240,.12);
+    }
+    .broadcast-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #3d2716;
+      background: #f2d58f;
+      font-weight: 900;
+    }
+    .broadcast-copy {
+      min-width: 0;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .broadcast-copy strong {
+      color: #ffe6a8;
+      font-weight: 900;
+    }
+    .broadcast-fixed,
+    .broadcast-custom {
+      display: inline;
+    }
+    .broadcast-custom {
+      color: #fff3c9;
+      font-weight: 800;
+    }
+    .status-panel,
+    .editor-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .status-title {
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .status-desc {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .editor-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .copy-head-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .copy-edit {
+      border: 0;
+      padding: 0;
+      color: var(--gold);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .state.reviewing { background: var(--gold); }
+    .state.rejected { background: var(--red); }
+    .char-count { color: var(--muted); font-weight: 500; }
+    .broadcast-textarea {
+      width: 100%;
+      min-height: 88px;
+      resize: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      color: var(--ink);
+      background: #fffdf8;
+      font: inherit;
+      line-height: 1.5;
+      outline: none;
+    }
+    .broadcast-textarea:focus { border-color: var(--gold); }
+    .broadcast-textarea::placeholder {
+      color: #9a9184;
+      opacity: 1;
+    }
+    .usage-toggle {
+      border: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+      background: transparent;
+      text-align: right;
+      cursor: pointer;
+    }
+    .usage-toggle:disabled {
+      cursor: default;
+      opacity: .58;
+    }
+    .switch {
+      width: 44px;
+      height: 24px;
+      border-radius: 999px;
+      padding: 3px;
+      flex: 0 0 auto;
+      background: #c9bea9;
+      transition: .18s ease;
+    }
+    .switch::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(38,29,22,.22);
+      transition: .18s ease;
+    }
+    .switch.on { background: var(--green); }
+    .switch.on::after { transform: translateX(20px); }
+    .broadcast-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .broadcast-actions.single { grid-template-columns: 1fr; }
+    .expiry-link {
+      width: 100%;
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin-top: 10px;
+      padding: 10px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--ink);
+      background: transparent;
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .expiry-link span:last-child {
+      color: var(--gold);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .remaining-count {
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .quota-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 12;
+      display: none;
+      align-items: flex-end;
+      background: rgba(20,16,13,.58);
+    }
+    .quota-overlay.show { display: flex; }
+    .leave-overlay {
+      align-items: center;
+      padding: 20px;
+    }
+    .leave-dialog {
+      width: 100%;
+      padding: 16px;
+      border-radius: 10px;
+      background: #fffaf0;
+      box-shadow: 0 16px 36px rgba(20,16,13,.28);
+    }
+    .leave-copy {
+      margin: 8px 0 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .quota-sheet {
+      width: 100%;
+      max-height: 72%;
+      overflow-y: auto;
+      padding: 16px 16px 24px;
+      border-radius: 18px 18px 0 0;
+      background: #fffaf0;
+      box-shadow: 0 -16px 34px rgba(20,16,13,.24);
+    }
+    .quota-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .quota-close {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      background: var(--panel);
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .quota-summary {
+      padding: 11px 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      color: #fffaf0;
+      background: linear-gradient(135deg, #4a2c1c, #a86b2c);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .quota-list { display: grid; gap: 8px; }
+    .quota-row {
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      min-height: 58px;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .quota-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 3px #f5e2ba;
+    }
+    .quota-expiry {
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .quota-source {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .quota-count {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
     .point-time {
       color: var(--muted);
       font-size: 12px;
@@ -623,8 +907,7 @@
       background: var(--green);
       white-space: nowrap;
     }
-    .state.frozen { background: var(--red); }
-    .state.expired { background: #8b8175; }
+    .state.unavailable { background: var(--red); }
     .state.used { background: #8b8175; }
     .side, .notes {
       border: 1px solid var(--line);
@@ -739,7 +1022,7 @@
       <div class="flow">
         <button class="active" data-view="home">商城首页</button>
         <button data-view="detail">商品详情</button>
-        <button data-view="exchange">我的兑换</button>
+        <button data-view="exchange">我的权益</button>
         <button data-view="points">积分明细</button>
       </div>
     </aside>
@@ -789,7 +1072,7 @@
       <ul>
         <li>首页解决“我有什么积分，可以换什么”。</li>
         <li>详情页解决“为什么值得换，换后怎么用”。</li>
-        <li>我的兑换解决“已兑换资产在哪里，当前是什么状态”。</li>
+        <li>我的权益解决“已兑换资产在哪里，当前是什么状态”。</li>
         <li>积分明细通过顶部明细进入，解决“积分从哪里来，什么时候过期”。</li>
       </ul>
     </aside>
@@ -799,21 +1082,20 @@
     const gradeOrder = ["男爵", "子爵", "伯爵", "侯爵", "公爵", "国王"];
     const homeTabs = ["男爵", "子爵", "伯爵", "侯爵", "公爵", "国王"];
     const products = [
+      { name: "自定义送礼横幅", icon: "幅", cls: "dark", minGrade: "国王", grade: "国王", price: "88,000", usageCount: "1 次", validity: "兑换后 30 天", remaining: "剩余 20 件", intro: "国王在送出价值 ≥10,000 钻的礼物时，可为触发的全服横幅添加自定义文案，送上专属于朋友的祝福语。" },
       { name: "新房间背景", icon: "◈", cls: "dark", minGrade: "侯爵", grade: "侯爵及以上", price: "18,000", validity: "兑换后 30 天", remaining: "剩余 56 件", intro: "兑换后立即生效，房间主页将展示专属背景。有效期内可在房间装扮中查看和使用。" },
       { name: "进房座驾升级", icon: "◇", cls: "", minGrade: "伯爵", grade: "伯爵及以上", price: "12,000", validity: "兑换后 7 天", remaining: "剩余 88 件", intro: "兑换后立即升级当前贵族进房座驾效果。进入房间时展示升级后的进场动画。" },
       { name: "特殊 ID 皮肤", icon: "ID", cls: "teal", minGrade: "公爵", grade: "公爵及以上", price: "28,000", validity: "兑换后 30 天", remaining: "剩余 40 件", intro: "兑换后立即生效，个人 ID 在资料卡、个人主页等场景展示专属皮肤效果。" },
       { name: "房间列表置上席位", icon: "▲", cls: "teal", minGrade: "公爵", grade: "公爵及以上", price: "32,000", validity: "兑换后 2 小时", remaining: "剩余 120 件", intro: "兑换后立即生效，当前房间在房间列表中获得置上展示席位，提升房间曝光。" }
     ];
     const exchangeRecords = [
+      { title: "自定义送礼横幅", icon: "幅", status: "可用", grade: "国王", cost: "88,000", action: "去设置", settingKey: "broadcast" },
       { title: "新房间背景", icon: "◈", status: "可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "侯爵及以上", cost: "18,000", action: "去查看" },
       { title: "进房座驾升级", icon: "◇", status: "可用", activeTime: "07-08 12:00 - 07-15 12:00", grade: "伯爵及以上", cost: "12,000", action: "去查看" },
       { title: "星辉 ID 皮肤", icon: "ID", status: "可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000", action: "去设置", settingKey: "idSkin" },
       { title: "暗金 ID 皮肤", icon: "ID", status: "可用", activeTime: "07-08 00:00 - 08-07 23:59", grade: "国王", cost: "48,000", action: "去设置", settingKey: "idSkin" },
       { title: "房间列表置上席位", icon: "▲", status: "可用", activeTime: "07-08 10:00 - 07-08 23:59", grade: "公爵及以上", cost: "32,000", action: "去设置", settingKey: "seat" },
-      { title: "特殊 ID 皮肤", icon: "ID", status: "不可用", reason: "暂不可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000" },
-      { title: "新房间背景", icon: "◈", status: "不可用", reason: "已过期", activeTime: "06-01 00:00 - 06-30 23:59", grade: "侯爵及以上", cost: "18,000" },
-      { title: "进房座驾升级", icon: "◇", status: "不可用", reason: "已过期", activeTime: "06-21 12:00 - 06-28 12:00", grade: "伯爵及以上", cost: "12,000" },
-      { title: "房间列表置上席位", icon: "▲", status: "不可用", reason: "已过期", activeTime: "06-28 20:00 - 06-28 22:00", grade: "公爵及以上", cost: "32,000" }
+      { title: "特殊 ID 皮肤", icon: "ID", status: "不可用", reason: "暂不可用", activeTime: "07-01 00:00 - 07-31 23:59", grade: "公爵及以上", cost: "28,000" }
     ];
     const settingGroups = {
       idSkin: {
@@ -835,6 +1117,25 @@
           { value: "seatA", name: "A级置上席位", icon: "▲", activeTime: "07-08 10:00 - 07-08 23:59", previewTitle: "置上席位展示" }
         ]
       }
+    };
+    const broadcastConfig = {
+      state: "draft",
+      currentNickname: "sawa 10086",
+      giftName: "荣耀之冠",
+      giftValue: "52,000",
+      defaultText: "",
+      text: "",
+      draftBaseline: "",
+      savedDraftText: "",
+      minTextLength: 5,
+      active: false,
+      editSnapshot: null,
+      reviewRequestId: 0,
+      allocations: [
+        { id: "B001", acquiredAt: "07-04 14:18", expiresAt: "08-03 14:18", used: false },
+        { id: "B002", acquiredAt: "07-13 09:30", expiresAt: "08-12 09:30", used: false },
+        { id: "B003", acquiredAt: "07-23 20:10", expiresAt: "08-22 20:10", used: false }
+      ]
     };
     const pointLogs = [
       { type: "gain", title: "送礼消费获得", amount: "+6,400", time: "07-01 14:22", desc: "有效期至 09-30 24:00" },
@@ -877,11 +1178,11 @@
     function renderHome(activeGrade = null) {
       setHeader("贵族荣耀商城", false);
       document.getElementById("pointNum").textContent = "128,600";
-      const selectedGrade = activeGrade || "公爵";
+      const selectedGrade = activeGrade || "国王";
       const visibleProducts = products.filter(product => product.inStock !== false && canExchangeAt(product, selectedGrade));
       root.innerHTML = `
         <div class="quick-entry" id="exchangeEntry">
-          <span>我的兑换</span><span class="arrow">›</span>
+          <span>我的权益</span><span class="arrow">›</span>
         </div>
         <div class="tabs grade-tabs">
           ${homeTabs.map(tab => `<button class="tab ${selectedGrade === tab ? "active" : ""}" data-grade-tab="${tab}">${tab}</button>`).join("")}
@@ -893,12 +1194,17 @@
     }
 
     function detailRows(product) {
-      return [
+      const rows = [
         ["可兑换贵族段位", product.grade],
-        ["兑换所需荣耀分", product.price],
-        ["商品有效期", product.validity],
-        ["商品剩余数量", product.remaining]
+        ["兑换所需荣耀分", product.price]
       ];
+      if (product.usageCount) {
+        rows.push(["使用次数", product.usageCount]);
+        rows.push(["使用期限", product.validity]);
+      } else {
+        rows.push(["商品有效期", product.validity]);
+      }
+      return rows;
     }
 
     function openProduct(product) {
@@ -913,28 +1219,47 @@
       drawer.classList.add("show");
     }
 
-    function unavailableStateClass(reason) {
-      return reason === "暂不可用" ? "frozen" : "expired";
+    function broadcastAvailableAllocations() {
+      return broadcastConfig.allocations.filter(item => !item.used);
+    }
+
+    function broadcastRemaining() {
+      return broadcastAvailableAllocations().length;
+    }
+
+    function broadcastNearestExpiry() {
+      const next = broadcastAvailableAllocations()[0];
+      return next ? next.expiresAt : "无";
+    }
+
+    function broadcastNearestExpiryDate() {
+      const expiry = broadcastNearestExpiry();
+      return expiry === "无" ? expiry : expiry.split(" ")[0];
+    }
+
+    function formatBroadcastExpiry(expiry) {
+      const [date, time] = expiry.split(" ");
+      const [month, day] = date.split("-");
+      return `2026 年 ${Number(month)} 月 ${Number(day)} 号 ${time}`;
     }
 
     function renderExchange(activeStatus = "可用") {
-      setHeader("我的兑换", false, true);
+      setHeader("我的权益", false, true);
       const statuses = ["可用", "不可用"];
-      const records = exchangeRecords.filter(item => item.status === activeStatus);
+      const records = exchangeRecords.filter(item => item.status === activeStatus && !(item.settingKey === "broadcast" && broadcastRemaining() === 0));
       root.innerHTML = `
         <div class="setting-head">
           <button class="pill" id="exchangeBack">‹ 返回</button>
-          <div class="setting-title">我的兑换</div>
+          <div class="setting-title">我的权益</div>
         </div>
         <div class="tabs">${statuses.map(status => `<button class="tab ${activeStatus === status ? "active" : ""}" data-exchange-tab="${status}">${status}</button>`).join("")}</div>
         <div class="list">${records.map(item => `<div class="benefit">
-          <div class="benefit-head"><span>${item.title}</span>${item.reason ? `<span class="state ${unavailableStateClass(item.reason)}">${item.reason}</span>` : ""}</div>
+          <div class="benefit-head"><span>${item.title}</span>${item.reason ? `<span class="state unavailable">${item.reason}</span>` : ""}</div>
           <div class="expired-benefit">
             <div class="benefit-icon">${item.icon}</div>
             <div class="benefit-meta">
-              <div>有效时间：${item.activeTime}</div>
+              ${item.settingKey === "broadcast" ? `<div>剩余次数：${broadcastRemaining()} 次</div><div>最近到期：${broadcastNearestExpiryDate()}</div>` : `<div>有效时间：${item.activeTime}</div>`}
               ${item.status === "可用" ? `<div>可用段位：${item.grade}</div>` : ""}
-              <div>消耗荣耀分：${item.cost}</div>
               ${item.reason === "暂不可用" ? `<div class="freeze-reason">暂不可用原因：${item.grade}段位可用</div>` : ""}
             </div>
           </div>
@@ -946,6 +1271,10 @@
     }
 
     function renderPrivilegeSetting(key) {
+      if (key === "broadcast") {
+        renderBroadcastSetting();
+        return;
+      }
       setHeader("贵族荣耀商城", false, true);
       const group = settingGroups[key];
       const selectedOption = group.options.find(option => option.value === group.selected) || group.options[0];
@@ -997,6 +1326,220 @@
         </div>`;
       }
       return "";
+    }
+
+    function renderBroadcastQuotaRows() {
+      return broadcastAvailableAllocations().map(item => `<div class="quota-row">
+        <span class="quota-dot"></span>
+        <div>
+          <div class="quota-expiry">${formatBroadcastExpiry(item.expiresAt)} 到期</div>
+        </div>
+        <span class="quota-count">剩余 1 次</span>
+      </div>`).join("");
+    }
+
+    function scheduleBroadcastApproval() {
+      const requestId = ++broadcastConfig.reviewRequestId;
+      setTimeout(() => {
+        if (broadcastConfig.state !== "reviewing" || broadcastConfig.reviewRequestId !== requestId) return;
+        const rejected = broadcastConfig.text.includes("小可爱");
+        broadcastConfig.state = rejected ? "rejected" : "approved";
+        broadcastConfig.active = false;
+        if (root.querySelector("[data-broadcast-page]")) renderBroadcastSetting();
+        showToast(rejected ? "文案审核未通过，请修改后重新提交" : "文案审核通过，可以激活特权");
+      }, 3000);
+    }
+
+    function renderBroadcastSetting() {
+      setHeader("贵族荣耀商城", false, true);
+      const remaining = broadcastRemaining();
+      const canToggle = broadcastConfig.state === "approved" && remaining > 0;
+      const isEditable = broadcastConfig.state === "draft";
+      const isReviewing = broadcastConfig.state === "reviewing";
+      const isApproved = broadcastConfig.state === "approved";
+      const isRejected = broadcastConfig.state === "rejected";
+      const canCancelEdit = isEditable && broadcastConfig.editSnapshot;
+      const baselineText = (broadcastConfig.editSnapshot?.text ?? broadcastConfig.draftBaseline).trim();
+      const draftText = broadcastConfig.text.trim();
+      const isUsingDefaultText = draftText === broadcastConfig.defaultText;
+      const canSubmit = isEditable && draftText.length >= broadcastConfig.minTextLength && draftText !== baselineText;
+      const inputPlaceholder = isEditable && canCancelEdit ? "" : "快编辑你的专属祝福语吧～";
+      const isUsed = remaining === 0;
+      root.innerHTML = `
+        <div data-broadcast-page>
+          <div class="setting-head">
+            <button class="pill" id="settingBack">‹ 返回</button>
+            <div class="setting-title">自定义送礼横幅</div>
+          </div>
+          <div class="broadcast-preview">
+            <div class="preview-label">送礼横幅预览</div>
+            <div class="broadcast-banner">
+              <div class="broadcast-avatar">S</div>
+              <div class="broadcast-copy">
+                <span class="broadcast-fixed"><strong>${broadcastConfig.currentNickname}</strong> 赠送 <strong>{对方昵称}</strong> ${broadcastConfig.giftName}，价值 ${broadcastConfig.giftValue} 钻。</span>
+                <span class="broadcast-custom" id="broadcastPreviewCustom">${broadcastConfig.text}</span>
+              </div>
+            </div>
+          </div>
+          <div class="status-panel">
+            <div class="status-row">
+              <div class="status-title">权益激活</div>
+              <button class="usage-toggle" id="broadcastToggle" ${canToggle ? "" : "disabled"} aria-label="${broadcastConfig.active ? "取消激活特权" : "激活特权"}">
+                <span class="switch ${broadcastConfig.active ? "on" : ""}"></span>
+              </button>
+            </div>
+            <div class="status-desc">${isApproved ? "打开后，在房间送出价值 ≥10,000 钻礼物时，都自动使用本权益并消耗 1 次次数" : "自定义文案审核通过后才可激活"}</div>
+            ${remaining ? `<button class="expiry-link" id="broadcastExpiryEntry"><span>剩余 <strong class="remaining-count">${remaining}</strong> 次，最近一次到期时间 ${broadcastNearestExpiryDate()}</span><span>明细 ›</span></button>` : ""}
+          </div>
+          <div class="editor-panel">
+            <div class="editor-label">
+              <span>自定义祝福文案</span>
+              <span class="copy-head-actions">
+                ${isEditable ? `<span class="char-count" id="broadcastCount">${broadcastConfig.text.length}/30</span>` : `<span class="state ${isReviewing ? "reviewing" : (isRejected ? "rejected" : "")}">${isUsingDefaultText ? "默认文案" : (isReviewing ? "审核中" : (isRejected ? "审核未通过" : "审核通过"))}</span><button class="copy-edit" id="editBroadcast">编辑</button>`}
+              </span>
+            </div>
+            <textarea class="broadcast-textarea" id="broadcastText" maxlength="30" placeholder="${inputPlaceholder}" ${isEditable ? "" : "readonly"} aria-label="${isEditable ? "编辑自定义祝福文案" : "点击编辑自定义祝福文案"}">${broadcastConfig.text}</textarea>
+            <div class="status-desc">国王在送出价值 ≥10,000 钻的礼物时，可在送礼横幅上触发该文案。请文明用语，审核通过后方可使用。</div>
+            ${isEditable ? `<div class="broadcast-actions ${canCancelEdit ? "" : "single"}">
+              ${canCancelEdit ? `<button class="btn secondary" id="cancelBroadcastEdit">取消编辑</button>` : ""}
+              <button class="btn ${canSubmit ? "" : "disabled"}" id="submitBroadcast" aria-disabled="${canSubmit ? "false" : "true"}">提交审核</button>
+            </div>` : ""}
+          </div>
+          ${isUsed ? `<div class="notice">全部使用次数已用完，本特权已失效。</div>` : ""}
+          <div class="quota-overlay" id="quotaOverlay">
+            <section class="quota-sheet" aria-label="剩余次数明细">
+              <div class="quota-head">
+                <div class="setting-title">剩余次数明细</div>
+                <button class="quota-close" id="quotaClose" aria-label="关闭">×</button>
+              </div>
+              <div class="quota-summary">剩余 ${remaining} 次，使用时优先消耗最早到期的次数</div>
+              <div class="quota-list">${renderBroadcastQuotaRows()}</div>
+            </section>
+          </div>
+          <div class="quota-overlay leave-overlay" id="leaveOverlay">
+            <section class="leave-dialog" aria-label="保存文案确认">
+              <div class="quota-head">
+                <div class="setting-title">内容已变化</div>
+              </div>
+              <div class="leave-copy">是否保存后退出？</div>
+              <div class="broadcast-actions">
+                <button class="btn secondary" id="cancelLeaveBroadcast">取消</button>
+                <button class="btn" id="saveBroadcastDraft">保存</button>
+              </div>
+            </section>
+          </div>
+        </div>`;
+      const leaveOverlay = document.getElementById("leaveOverlay");
+      document.getElementById("settingBack").addEventListener("click", () => {
+        const hasUnsavedChanges = isEditable && broadcastConfig.text.trim() !== broadcastConfig.savedDraftText.trim();
+        if (hasUnsavedChanges) {
+          leaveOverlay.classList.add("show");
+        } else {
+          renderExchange("可用");
+        }
+      });
+      leaveOverlay.addEventListener("click", event => {
+        if (event.target === leaveOverlay) leaveOverlay.classList.remove("show");
+      });
+      document.getElementById("saveBroadcastDraft").addEventListener("click", () => {
+        broadcastConfig.text = broadcastConfig.text.trim();
+        broadcastConfig.savedDraftText = broadcastConfig.text;
+        broadcastConfig.draftBaseline = broadcastConfig.text;
+        broadcastConfig.state = "reviewing";
+        broadcastConfig.active = false;
+        broadcastConfig.editSnapshot = null;
+        renderExchange("可用");
+        showToast("文案已提交审核");
+        scheduleBroadcastApproval();
+      });
+      document.getElementById("cancelLeaveBroadcast").addEventListener("click", () => {
+        if (broadcastConfig.editSnapshot) {
+          broadcastConfig.text = broadcastConfig.editSnapshot.text;
+          broadcastConfig.active = broadcastConfig.editSnapshot.active;
+          broadcastConfig.state = broadcastConfig.editSnapshot.state;
+          broadcastConfig.editSnapshot = null;
+        } else {
+          broadcastConfig.text = broadcastConfig.savedDraftText;
+        }
+        broadcastConfig.savedDraftText = broadcastConfig.text;
+        renderExchange("可用");
+        if (broadcastConfig.state === "reviewing") scheduleBroadcastApproval();
+      });
+      const expiryEntry = document.getElementById("broadcastExpiryEntry");
+      const quotaOverlay = document.getElementById("quotaOverlay");
+      const quotaClose = document.getElementById("quotaClose");
+      if (expiryEntry) expiryEntry.addEventListener("click", () => quotaOverlay.classList.add("show"));
+      if (quotaClose) quotaClose.addEventListener("click", () => quotaOverlay.classList.remove("show"));
+      if (quotaOverlay) quotaOverlay.addEventListener("click", event => {
+        if (event.target === quotaOverlay) quotaOverlay.classList.remove("show");
+      });
+      const textArea = document.getElementById("broadcastText");
+      if (textArea) {
+        textArea.addEventListener("input", () => {
+          broadcastConfig.text = textArea.value;
+          document.getElementById("broadcastCount").textContent = `${textArea.value.length}/30`;
+          const previewText = document.getElementById("broadcastPreviewCustom");
+          if (previewText) previewText.textContent = textArea.value;
+          const submitButton = document.getElementById("submitBroadcast");
+          const currentText = textArea.value.trim();
+          const hasValidChange = currentText.length >= broadcastConfig.minTextLength && currentText !== baselineText;
+          if (submitButton) {
+            submitButton.classList.toggle("disabled", !hasValidChange);
+            submitButton.setAttribute("aria-disabled", hasValidChange ? "false" : "true");
+          }
+        });
+      }
+      const submit = document.getElementById("submitBroadcast");
+      if (submit) submit.addEventListener("click", () => {
+        broadcastConfig.text = broadcastConfig.text.trim();
+        if (broadcastConfig.text.length < broadcastConfig.minTextLength) {
+          showToast(`至少输入 ${broadcastConfig.minTextLength} 个字符`);
+          return;
+        }
+        if (broadcastConfig.text === baselineText) {
+          showToast("文案未修改");
+          return;
+        }
+        broadcastConfig.state = "reviewing";
+        broadcastConfig.active = false;
+        broadcastConfig.draftBaseline = broadcastConfig.text;
+        broadcastConfig.savedDraftText = broadcastConfig.text;
+        broadcastConfig.editSnapshot = null;
+        renderBroadcastSetting();
+        showToast("文案已提交审核");
+        scheduleBroadcastApproval();
+      });
+      const cancelEdit = document.getElementById("cancelBroadcastEdit");
+      if (cancelEdit) cancelEdit.addEventListener("click", () => {
+        broadcastConfig.text = broadcastConfig.editSnapshot.text;
+        broadcastConfig.active = broadcastConfig.editSnapshot.active;
+        broadcastConfig.state = broadcastConfig.editSnapshot.state;
+        broadcastConfig.savedDraftText = broadcastConfig.editSnapshot.text;
+        broadcastConfig.editSnapshot = null;
+        renderBroadcastSetting();
+        if (broadcastConfig.state === "reviewing") scheduleBroadcastApproval();
+        showToast("已取消编辑");
+      });
+      const toggle = document.getElementById("broadcastToggle");
+      if (toggle) toggle.addEventListener("click", () => {
+        broadcastConfig.active = !broadcastConfig.active;
+        renderBroadcastSetting();
+        showToast(broadcastConfig.active ? "特权已激活" : "特权已取消激活");
+      });
+      const edit = document.getElementById("editBroadcast");
+      if (edit) edit.addEventListener("click", () => {
+        broadcastConfig.reviewRequestId += 1;
+        broadcastConfig.editSnapshot = {
+          text: broadcastConfig.text,
+          active: broadcastConfig.active,
+          state: broadcastConfig.state
+        };
+        broadcastConfig.savedDraftText = broadcastConfig.text;
+        broadcastConfig.state = "draft";
+        broadcastConfig.active = false;
+        renderBroadcastSetting();
+        document.getElementById("broadcastText").focus();
+      });
     }
 
     function pointLogCard(item) {
@@ -1073,6 +1616,8 @@
     }
 
     function setHeader(title, compact = false, hidden = false) {
+      document.querySelector(".screen").scrollTop = 0;
+      window.scrollTo(0, 0);
       headerTitle.textContent = title;
       topHeader.classList.toggle("compact", compact);
       topHeader.classList.toggle("hidden", hidden);
