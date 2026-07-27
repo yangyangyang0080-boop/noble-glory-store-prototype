@@ -1000,6 +1000,253 @@
       cursor: pointer;
       padding: 4px 0;
     }
+    .gift-lab-head {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .gift-lab-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .gift-lab-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: #6f4311;
+      background: #f3dfb7;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .gift-state-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .gift-state-tab {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 9px;
+      flex: 0 0 auto;
+      color: var(--muted);
+      background: var(--panel);
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .gift-state-tab.active {
+      border-color: var(--gold);
+      color: #fffaf0;
+      background: var(--gold);
+    }
+    .gift-demo {
+      width: 330px;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #130d2d;
+      box-shadow: 0 12px 28px rgba(35,19,74,.22);
+    }
+    .gift-image-section {
+      width: 330px;
+      max-width: 100%;
+      background-image: url("礼物面板参考.png");
+      background-repeat: no-repeat;
+      background-size: 330px auto;
+    }
+    .gift-room-section {
+      height: 296px;
+      background-position: 0 0;
+    }
+    .gift-recipient-section {
+      height: 46px;
+      background-position: 0 -333px;
+    }
+    .gift-products-section {
+      height: 296px;
+      background-position: 0 -432px;
+    }
+    .gift-guidance-slot {
+      min-height: 46px;
+      padding: 7px 10px;
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px solid rgba(164,126,255,.3);
+      border-bottom: 1px solid rgba(164,126,255,.3);
+      color: #fff;
+      background: rgba(19,13,45,.98);
+      cursor: pointer;
+    }
+    .gift-guidance-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #2c1c08;
+      background: #e5b95f;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .gift-guidance-icon.reviewing {
+      color: #fff;
+      background: #65567f;
+    }
+    .gift-guidance-icon.rejected {
+      color: #fff;
+      background: #c64d50;
+    }
+    .gift-guidance-copy {
+      min-width: 0;
+      display: grid;
+      gap: 2px;
+    }
+    .gift-guidance-title,
+    .gift-guidance-sub {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .gift-guidance-title {
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .gift-entry-arrow {
+      margin-left: 3px;
+      color: #f2be4f;
+      font-weight: 900;
+    }
+    .gift-guidance-sub {
+      color: #bdb2d5;
+      font-size: 9px;
+    }
+    .gift-guidance-action {
+      width: 72px;
+      min-height: 26px;
+      border: 1px solid rgba(242,190,79,.72);
+      border-radius: 999px;
+      padding: 4px 6px;
+      color: #27170a;
+      background: #f2be4f;
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .gift-guidance-action.secondary {
+      color: #f2be4f;
+      background: transparent;
+    }
+    .gift-guidance-action:disabled {
+      color: #c8bdd8;
+      border-color: rgba(200,189,216,.4);
+      background: rgba(200,189,216,.12);
+      cursor: default;
+    }
+    .gift-switch-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      appearance: none;
+      -webkit-appearance: none;
+      line-height: 0;
+      cursor: pointer;
+    }
+    .gift-switch-action .switch {
+      width: 44px;
+      height: 24px;
+      padding: 3px;
+    }
+    .gift-switch-action .switch.on::after { transform: translateX(20px); }
+    .gift-preview-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 15;
+      display: none;
+      align-items: flex-end;
+      background: rgba(12,8,25,.68);
+    }
+    .gift-preview-overlay.show { display: flex; }
+    .gift-preview-sheet {
+      width: 100%;
+      padding: 16px 14px 20px;
+      border-radius: 14px 14px 0 0;
+      color: #fff;
+      background: #211839;
+      box-shadow: 0 -12px 30px rgba(8,5,20,.28);
+    }
+    .gift-preview-sheet .setting-title { color: #fff; }
+    .gift-preview-close {
+      width: 28px;
+      height: 28px;
+      border: 0;
+      border-radius: 50%;
+      color: #d9d0e8;
+      background: rgba(255,255,255,.12);
+      cursor: pointer;
+    }
+    .gift-final-banner {
+      margin-top: 12px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(255,236,188,.4);
+      border-radius: 8px;
+      background: linear-gradient(125deg, #3a2118, #8a5628 65%, #c4923c);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .gift-final-banner strong { color: #ffe3a0; }
+    .gift-preview-note {
+      margin-top: 10px;
+      color: #bdb2d5;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .gift-setting-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 16;
+      display: none;
+      align-items: flex-end;
+      background: rgba(12,8,25,.68);
+    }
+    .gift-setting-overlay.show { display: flex; }
+    .gift-setting-sheet {
+      width: 100%;
+      max-height: 78%;
+      overflow-y: auto;
+      padding: 14px 14px 24px;
+      border-radius: 18px 18px 0 0;
+      color: var(--ink);
+      background: #fffaf0;
+      box-shadow: 0 -16px 34px rgba(8,5,20,.3);
+    }
+    .gift-setting-sheet .broadcast-preview {
+      min-height: 118px;
+      margin-top: 12px;
+    }
+    .gift-setting-sheet .status-panel,
+    .gift-setting-sheet .editor-panel {
+      margin-bottom: 10px;
+    }
+    .gift-setting-sheet .broadcast-actions {
+      margin-top: 10px;
+    }
+    .gift-setting-sheet .btn {
+      min-height: 40px;
+      font-size: 14px;
+    }
     @media (max-width: 980px) {
       .stage {
         grid-template-columns: 1fr;
@@ -1023,6 +1270,7 @@
         <button class="active" data-view="home">商城首页</button>
         <button data-view="detail">商品详情</button>
         <button data-view="exchange">我的权益</button>
+        <button data-view="giftPanel">礼物面板</button>
         <button data-view="points">积分明细</button>
       </div>
     </aside>
@@ -1073,6 +1321,7 @@
         <li>首页解决“我有什么积分，可以换什么”。</li>
         <li>详情页解决“为什么值得换，换后怎么用”。</li>
         <li>我的权益解决“已兑换资产在哪里，当前是什么状态”。</li>
+        <li>礼物面板以上帝视角切换全部状态，验证送礼前的提示、操作和完整横幅预览。</li>
         <li>积分明细通过顶部明细进入，解决“积分从哪里来，什么时候过期”。</li>
       </ul>
     </aside>
@@ -1137,6 +1386,50 @@
         { id: "B003", acquiredAt: "07-23 20:10", expiresAt: "08-22 20:10", used: false }
       ]
     };
+    const giftPanelStates = {
+      enabled: {
+        label: "已开启",
+        icon: "播",
+        title: "自定义横幅：愿今晚的星光与你同在",
+        sub: "剩余 3 次",
+        action: "关闭",
+        control: "switch",
+        switchOn: true,
+        preview: true
+      },
+      available: {
+        label: "未开启",
+        icon: "播",
+        title: "自定义横幅：愿今晚的星光与你同在",
+        sub: "剩余 3 次",
+        action: "开启",
+        control: "switch",
+        switchOn: false,
+        preview: true
+      },
+      unset: {
+        label: "文案未设置",
+        icon: "播",
+        title: "自定义横幅：尚未设置文案",
+        sub: "",
+        action: "去设置 ›"
+      },
+      reviewing: {
+        label: "审核中",
+        icon: "播",
+        title: "自定义横幅：愿今夜的星光与你同在",
+        sub: "",
+        action: "审核中"
+      },
+      rejected: {
+        label: "审核未通过",
+        icon: "播",
+        title: "自定义横幅：愿今夜的星光与你同在",
+        sub: "",
+        action: "审核不通过"
+      }
+    };
+    let giftPanelState = "enabled";
     const pointLogs = [
       { type: "gain", title: "送礼消费获得", amount: "+6,400", time: "07-01 14:22", desc: "有效期至 09-30 24:00" },
       { type: "spend", title: "兑换房间列表置上席位", amount: "-32,000", time: "07-01 13:10", desc: "权益已发放" },
@@ -1369,7 +1662,7 @@
         <div data-broadcast-page>
           <div class="setting-head">
             <button class="pill" id="settingBack">‹ 返回</button>
-            <div class="setting-title">自定义送礼横幅</div>
+            <div class="setting-title">自定义送礼横幅设置</div>
           </div>
           <div class="broadcast-preview">
             <div class="preview-label">送礼横幅预览</div>
@@ -1588,6 +1881,174 @@
       root.querySelectorAll("[data-point-tab]").forEach(tab => tab.addEventListener("click", () => renderPoints(tab.dataset.pointTab)));
     }
 
+    function renderGiftPanel(stateKey = giftPanelState) {
+      giftPanelState = stateKey;
+      setHeader("礼物面板", false, true);
+      const state = giftPanelStates[stateKey];
+      const settingText = stateKey === "unset" ? "" : "愿今夜的星光与你同在";
+      const settingEditable = stateKey === "unset";
+      const settingApproved = stateKey === "enabled" || stateKey === "available";
+      const settingStatus = settingApproved ? "审核通过" : (stateKey === "reviewing" ? "审核中" : (stateKey === "rejected" ? "审核未通过" : ""));
+      const settingStatusClass = stateKey === "reviewing" ? "reviewing" : (stateKey === "rejected" ? "rejected" : "");
+      root.innerHTML = `
+        <div class="gift-lab-head">
+          <div class="gift-lab-title">
+            <div class="setting-title">礼物面板</div>
+            <span class="gift-lab-badge">上帝视角</span>
+          </div>
+          <div class="gift-state-tabs">
+            ${Object.entries(giftPanelStates).map(([key, item]) => `<button class="gift-state-tab ${key === stateKey ? "active" : ""}" data-gift-state="${key}">${item.label}</button>`).join("")}
+          </div>
+        </div>
+        <div class="gift-demo" aria-label="房间礼物面板状态演示">
+          <div class="gift-image-section gift-room-section"></div>
+          <div class="gift-guidance-slot" id="giftGuidanceSlot" role="button" tabindex="0" aria-label="进入自定义送礼横幅设置">
+            <div class="gift-guidance-icon ${state.iconClass || ""}">${state.icon}</div>
+            <div class="gift-guidance-copy">
+              <div class="gift-guidance-title">${state.title}${state.control === "switch" ? `<span class="gift-entry-arrow">›</span>` : ""}</div>
+              ${state.sub ? `<div class="gift-guidance-sub">${state.sub}</div>` : ""}
+            </div>
+            ${state.control === "switch"
+              ? `<button class="gift-switch-action" id="giftGuidanceAction" aria-label="${state.action}"><span class="switch ${state.switchOn ? "on" : ""}"></span></button>`
+              : `<button class="gift-guidance-action ${state.actionClass || ""}" id="giftGuidanceAction" ${state.actionDisabled ? "disabled" : ""}>${state.action}</button>`}
+          </div>
+          <div class="gift-image-section gift-recipient-section"></div>
+          <div class="gift-image-section gift-products-section"></div>
+        </div>
+        <div class="gift-preview-overlay" id="giftPreviewOverlay">
+          <section class="gift-preview-sheet" aria-label="完整送礼横幅预览">
+            <div class="status-row">
+              <div class="setting-title">本次横幅预览</div>
+              <button class="gift-preview-close" id="giftPreviewClose" aria-label="关闭">×</button>
+            </div>
+            <div class="gift-final-banner">
+              <div class="broadcast-avatar">S</div>
+              <div><strong>sawa 10086</strong> 赠送 <strong>当前收礼人</strong> 荣耀之冠，价值 52,000 钻。愿今夜的星光与你同在。</div>
+            </div>
+            <div class="gift-preview-note">横幅已代入当前送礼人、当前收礼人与所选礼物；正式送出后消耗 1 次权益次数。</div>
+          </section>
+        </div>
+        <div class="gift-setting-overlay" id="giftSettingOverlay">
+          <section class="gift-setting-sheet" aria-label="自定义送礼横幅设置">
+            <div class="status-row">
+              <div class="setting-title">自定义送礼横幅设置</div>
+              <button class="gift-preview-close" id="giftSettingClose" aria-label="关闭">×</button>
+            </div>
+            <div class="broadcast-preview">
+              <div class="preview-label">送礼横幅预览</div>
+              <div class="broadcast-banner">
+                <div class="broadcast-avatar">S</div>
+                <div class="broadcast-copy">
+                  <span class="broadcast-fixed"><strong>sawa 10086</strong> 赠送 <strong>{对方昵称}</strong> 荣耀之冠，价值 52,000 钻。</span>
+                  <span class="broadcast-custom" id="giftSettingPreviewCustom">${settingText}</span>
+                </div>
+              </div>
+            </div>
+            <div class="status-panel">
+              <div class="status-row">
+                <div class="status-title">权益激活</div>
+                <button class="usage-toggle" id="giftSettingToggle" ${settingApproved ? "" : "disabled"} aria-label="${stateKey === "enabled" ? "取消激活特权" : "激活特权"}">
+                  <span class="switch ${stateKey === "enabled" ? "on" : ""}"></span>
+                </button>
+              </div>
+              <div class="status-desc">${settingApproved ? "打开后，在房间送出价值 ≥10,000 钻礼物时，都自动使用本权益并消耗 1 次次数" : "自定义文案审核通过后才可激活"}</div>
+              <div class="expiry-link"><span>剩余 <strong class="remaining-count">3</strong> 次，最近一次到期时间 08-03</span><span>明细 ›</span></div>
+            </div>
+            <div class="editor-panel">
+              <div class="editor-label">
+                <span>自定义祝福文案</span>
+                <span class="copy-head-actions" id="giftSettingHeadActions">
+                  ${settingEditable
+                    ? `<span class="char-count" id="giftSettingCount">0/30</span>`
+                    : `<span class="state ${settingStatusClass}">${settingStatus}</span><button class="copy-edit" id="giftSettingEdit">编辑</button>`}
+                </span>
+              </div>
+              <textarea class="broadcast-textarea" id="giftSettingText" maxlength="30" placeholder="快编辑你的专属祝福语吧～" ${settingEditable ? "" : "readonly"}>${settingText}</textarea>
+              <div class="status-desc">国王在送出价值 ≥10,000 钻的礼物时，可在送礼横幅上触发该文案。请文明用语，审核通过后方可使用。</div>
+              <div class="broadcast-actions ${settingEditable ? "single" : ""}" id="giftSettingActions" ${settingEditable ? "" : "hidden"}>
+                <button class="btn secondary" id="giftSettingCancelEdit" ${settingEditable ? "hidden" : ""}>取消编辑</button>
+                <button class="btn disabled" id="giftSettingSubmit" aria-disabled="true">提交审核</button>
+              </div>
+            </div>
+          </section>
+        </div>`;
+
+      root.querySelectorAll("[data-gift-state]").forEach(button => button.addEventListener("click", () => renderGiftPanel(button.dataset.giftState)));
+      const slot = document.getElementById("giftGuidanceSlot");
+      const action = document.getElementById("giftGuidanceAction");
+      const previewOverlay = document.getElementById("giftPreviewOverlay");
+      const settingOverlay = document.getElementById("giftSettingOverlay");
+      slot.addEventListener("click", event => {
+        if (event.target.closest("#giftGuidanceAction")) return;
+        settingOverlay.classList.add("show");
+      });
+      slot.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") settingOverlay.classList.add("show");
+      });
+      if (action) action.addEventListener("click", () => {
+        if (stateKey === "enabled") {
+          renderGiftPanel("available");
+          showToast("本次送礼已关闭自定义横幅");
+        } else if (stateKey === "available") {
+          renderGiftPanel("enabled");
+          showToast("本次送礼已开启自定义横幅");
+        } else {
+          settingOverlay.classList.add("show");
+        }
+      });
+      document.getElementById("giftPreviewClose").addEventListener("click", () => previewOverlay.classList.remove("show"));
+      previewOverlay.addEventListener("click", event => {
+        if (event.target === previewOverlay) previewOverlay.classList.remove("show");
+      });
+      document.getElementById("giftSettingClose").addEventListener("click", () => settingOverlay.classList.remove("show"));
+      settingOverlay.addEventListener("click", event => {
+        if (event.target === settingOverlay) settingOverlay.classList.remove("show");
+      });
+      const settingToggle = document.getElementById("giftSettingToggle");
+      if (settingApproved) settingToggle.addEventListener("click", () => {
+        const nextState = stateKey === "enabled" ? "available" : "enabled";
+        renderGiftPanel(nextState);
+        document.getElementById("giftSettingOverlay").classList.add("show");
+        showToast(nextState === "enabled" ? "特权已激活" : "特权已取消激活");
+      });
+      const settingTextArea = document.getElementById("giftSettingText");
+      const settingPreview = document.getElementById("giftSettingPreviewCustom");
+      const settingActions = document.getElementById("giftSettingActions");
+      const settingSubmit = document.getElementById("giftSettingSubmit");
+      const settingCancel = document.getElementById("giftSettingCancelEdit");
+      const updateGiftSettingDraft = () => {
+        const count = document.getElementById("giftSettingCount");
+        if (count) count.textContent = `${settingTextArea.value.length}/30`;
+        settingPreview.textContent = settingTextArea.value;
+        const valid = settingTextArea.value.trim().length >= broadcastConfig.minTextLength;
+        settingSubmit.classList.toggle("disabled", !valid);
+        settingSubmit.setAttribute("aria-disabled", valid ? "false" : "true");
+      };
+      settingTextArea.addEventListener("input", updateGiftSettingDraft);
+      const settingEdit = document.getElementById("giftSettingEdit");
+      if (settingEdit) settingEdit.addEventListener("click", () => {
+        document.getElementById("giftSettingHeadActions").innerHTML = `<span class="char-count" id="giftSettingCount">${settingTextArea.value.length}/30</span>`;
+        settingTextArea.readOnly = false;
+        settingActions.hidden = false;
+        settingActions.classList.remove("single");
+        settingCancel.hidden = false;
+        settingTextArea.focus();
+        updateGiftSettingDraft();
+      });
+      settingCancel.addEventListener("click", () => {
+        renderGiftPanel(stateKey);
+        showToast("已取消编辑");
+      });
+      settingSubmit.addEventListener("click", () => {
+        if (settingTextArea.value.trim().length < broadcastConfig.minTextLength) {
+          showToast(`至少输入 ${broadcastConfig.minTextLength} 个字符`);
+          return;
+        }
+        renderGiftPanel("reviewing");
+        showToast("文案已提交审核");
+      });
+    }
+
     function showToast(message = "兑换成功，权益已发放", options = {}) {
       if (toastTimer) clearTimeout(toastTimer);
       toast.innerHTML = `
@@ -1629,6 +2090,7 @@
       if (view === "home") renderHome();
       if (view === "detail") openProduct(currentProduct);
       if (view === "exchange") renderExchange();
+      if (view === "giftPanel") renderGiftPanel();
       if (view === "points") renderPoints();
     }
 
